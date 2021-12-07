@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 async function getToken(username, password) {
   return fetch("https://fakestoreapi.com/auth/login", {
@@ -15,6 +16,7 @@ async function getToken(username, password) {
 }
 
 export default function LoginForm({ setToken, error, setError }) {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("mor_2314");
   const [password, setPassword] = useState("83r5^_");
 
@@ -35,7 +37,8 @@ export default function LoginForm({ setToken, error, setError }) {
       // console.log(response.token);
       localStorage.setItem("token", JSON.stringify(response));
       setToken(response.token);
-      setError(false);
+      navigate.push("/products");
+      // setError(false);
     }
     if (response.msg) {
       console.log(response.msg);
@@ -45,26 +48,28 @@ export default function LoginForm({ setToken, error, setError }) {
 
   return (
     <>
-      <form className="input-form" onSubmit={handleSubmit} autoComplete="off">
-        {/* <label>Username</label> */}
-        <h1>Login</h1>
-        <input
-          type="text"
-          placeholder="Username"
-          onChange={handleUsernameChange}
-          name="uname"
-          value={username}
-        ></input>
-        {/* <label>Password</label> */}
-        <input
-          type="password"
-          placeholder="Password"
-          onChange={handlePasswordChange}
-          name="psw"
-          value={password}
-        ></input>
-        <button>Login</button>
-      </form>
+      <div class="form-container">
+        <form className="input-form" onSubmit={handleSubmit} autoComplete="off">
+          {/* <label>Username</label> */}
+          <h1>Login</h1>
+          <input
+            type="text"
+            placeholder="Username"
+            onChange={handleUsernameChange}
+            name="uname"
+            value={username}
+          ></input>
+          {/* <label>Password</label> */}
+          <input
+            type="password"
+            placeholder="Password"
+            onChange={handlePasswordChange}
+            name="psw"
+            value={password}
+          ></input>
+          <button>Login</button>
+        </form>
+      </div>
     </>
   );
 }
