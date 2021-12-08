@@ -48,7 +48,7 @@ export default function LoginForm({ setToken, error, setError }) {
 
   return (
     <>
-      <div class="form-container">
+      <div className="form-container">
         <form className="input-form" onSubmit={handleSubmit} autoComplete="off">
           {/* <label>Username</label> */}
           <h1>Login</h1>

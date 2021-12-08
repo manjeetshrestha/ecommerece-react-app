@@ -1,5 +1,5 @@
 import React from "react";
-import useProductApi from "./useProductsApi.js";
+import useProductApi from "./useProductsApi.jsx";
 
 export default function Product() {
   const products = useProductApi();
@@ -8,7 +8,7 @@ export default function Product() {
       {products.map((product) => {
         return (
           <>
-            <div class="products-card products-card-1">
+            <div className="products-card products-card-1" key={product.id}>
               <img src={product.image}></img>
               <h2>{product.title}</h2>
               <h6>Rs {product.price}</h6>

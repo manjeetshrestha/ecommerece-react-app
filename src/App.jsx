@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import LoginForm from "./components/LoginForm";
-import LoginError from "./components/LoginError";
-import ProductsPage from "./components/ProductsPage.js";
+import LoginForm from "./components/LoginForm.jsx";
+import LoginError from "./components/LoginError.jsx";
+import ProductsPage from "./components/ProductsPage.jsx";
 import { Navigate } from "react-router-dom";
 
 // function setToken(userToken) {

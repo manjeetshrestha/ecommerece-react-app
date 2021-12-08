@@ -1,8 +1,8 @@
 import React from "react";
-import Product from "./Product.js";
+import Product from "./Product.jsx";
 export default function ProductsPage() {
   return (
-    <div class="products-container">
+    <div className="products-container">
       <Product />
     </div>
   );
