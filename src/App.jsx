@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LoginForm from "./components/LoginForm.jsx";
 import LoginError from "./components/LoginError.jsx";
 import ProductsPage from "./components/ProductsPage.jsx";
+import ProductPageDemo from "./components/ProductPageDemo.jsx";
 import { Navigate } from "react-router-dom";
 
 // function setToken(userToken) {
@@ -37,7 +38,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route exact path="/products" element={<ProductsPage />}></Route>
+        <Route exact path="/products" element={<ProductPageDemo />}></Route>
       </Routes>
       {/* {token && <Navigate to="/products" />} */}
       {/* <Carts /> */}
