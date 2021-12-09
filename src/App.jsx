@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes,Link } from "react-router-dom";
 import LoginForm from "./components/LoginForm.jsx";
 import LoginError from "./components/LoginError.jsx";
-import ProductsPage from "./components/ProductsPage.jsx";
 import ProductPageDemo from "./components/ProductPageDemo.jsx";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 // function setToken(userToken) {
 //   sessionStorage.setItem("token", JSON.stringify(userToken));
@@ -24,6 +23,15 @@ function App() {
   // const token = getToken();
   // const { token, setToken } = useToken();
   const [error, setError] = useState(false);
+  const navigate = useNavigate();
+
+  function logout(){
+    
+
+    localStorage.clear();
+    console.log()
+    navigate("/");
+  }
 
   if (!token) {
     return (
@@ -37,11 +45,24 @@ function App() {
 
   return (
     <div className="App">
+      {/* <BrowserRouter> */}
+      <nav className="navbar">
+        <div className="brand">
+            <h1>MeroStore</h1>
+        </div>
+        <div className = "links">
+        <Link to = "/products">Products</Link>
+        <Link to = "/products">About</Link>
+        <button onClick={logout}>Sign Out</button>
+        </div>
+      
+      </nav>
       <Routes>
         <Route exact path="/products" element={<ProductPageDemo />}></Route>
       </Routes>
       {/* {token && <Navigate to="/products" />} */}
       {/* <Carts /> */}
+      {/* </BrowserRouter> */}
     </div>
   );
 }

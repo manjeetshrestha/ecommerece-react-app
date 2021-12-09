@@ -37,7 +37,7 @@ export default function LoginForm({ setToken, error, setError }) {
       // console.log(response.token);
       localStorage.setItem("token", JSON.stringify(response));
       setToken(response.token);
-      navigate.push("/products");
+      navigate("/products");
       // setError(false);
     }
     if (response.msg) {

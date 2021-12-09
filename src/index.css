@@ -16,6 +16,10 @@ code {
     monospace;
 }
 
+a {
+  text-decoration: none;
+}
+
 .form-container {
   display: flex;
   align-items: center;
@@ -80,7 +84,7 @@ h1 {
   display: flex;
   gap: 5px;
   flex-wrap: wrap;
-  margin: 90px auto;
+  margin: 40px auto;
   padding: 0 30px;
 }
 
@@ -136,6 +140,10 @@ h1 {
   margin-top: 0;
 }
 
+.products-container {
+  padding: 0 70px;
+}
+
 .products-card button:hover {
   transform: scale(1.2);
   cursor: pointer;
@@ -144,4 +152,24 @@ h1 {
 .product-information {
   width: 200px;
   margin: 0 auto;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 50px 0px 50px;
+}
+
+.navbar .links a {
+  color: rgb(100, 29, 29);
+}
+
+.navbar .links a:not(:last-child) {
+  margin-right: 20px;
+}
+
+.brand h1 {
+  color: #ffc0cb;
+  font-weight: 700;
 }
