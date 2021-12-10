@@ -1,6 +1,24 @@
 import React, { useState, useEffect } from "react";
 
 // api to get products 
+
+function sortProductBy(products,sort){
+  if(sort === "0"){
+    return products;
+  }else if(sort === "1"){
+    return products.slice().sort(function(a,b){
+      return b.price - a.price;
+    });
+    // console.log(products);
+  }else if(sort === "2"){
+    return products.slice().sort(function(a,b){
+      return a.price - b.price;
+    });
+  }
+}
+
+
+
 function useProductApi() {
   const [products, setProducts] = useState([]);
 
@@ -45,8 +63,11 @@ function ProductCard(props){
                 
                 
             </div>
+            <div className="cta-buttons">
+              <button>View Details</button>
+              <button className="atc" onClick={props.handleIncrement}>Add To Cart</button>
+            </div>
             
-            <button>View Details</button>
             {/* <p>{product.description}</p> */}
             {/* <span>{product.id}</span> */}
         </div>
@@ -72,7 +93,7 @@ function SortComponent(props){
 }
 
 // function to map thorugh the data received through the api 
-export default function ProductPageDemo(){
+export default function ProductPageDemo({handleIncrement}){
     let products = useProductApi();
     // let sortedProducts = products;
     // let productsInitial = useProductApi();
@@ -81,29 +102,14 @@ export default function ProductPageDemo(){
       console.log(e.target.value);
       setSort(e.target.value);
     }
-    function sortProductBy(products,sort){
-      if(sort === "0"){
-        return products;
-      }else if(sort === "1"){
-        return products.slice().sort(function(a,b){
-          return b.price - a.price;
-        });
-        // console.log(products);
-      }else if(sort === "2"){
-        return products.slice().sort(function(a,b){
-          return a.price - b.price;
-        });
-        // return products;
-        console.log(products);
-      }
-    }
+   
     
     // 1 = High to low = Descending sort 
     // 2 = Low to high = Ascending sort
     
     const productItems = sortProductBy(products,sort).map((product) => {
 
-    return <ProductCard product={product} key= {product.id} />
+    return <ProductCard product={product} key= {product.id} handleIncrement={handleIncrement} />
   });   
   
   return(

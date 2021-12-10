@@ -11,22 +11,11 @@ function App() {
   const navigate = useNavigate();
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [error, setError] = useState(false);
-  // const navigate = useNavigate();
+  const [cartItems,setCartItems] = useState(0);
 
-  // function logout(){
-  //   localStorage.clear();
-  //   console.log()
-  //   navigate("/");
-  // }
-
-  // if (!token) {
-  //   return (
-  //     <>
-  //       <LoginForm setToken={setToken} setError={setError} error={error} />
-  //       <LoginError error={error} />
-  //     </>
-  //   );
-  // } 
+  const handleIncrement = () =>{
+    setCartItems(cartItems + 1);
+  }
 
   useEffect(() => {
     // const controller = new AbortController();
@@ -41,8 +30,8 @@ function App() {
       <Routes>
         <Route path = "/login" element={<LoginForm setToken={setToken} setError={setError} error={error} />}/>
 
-        <Route exact path="/" element={<Navigation />}>
-          <Route path = "products" element = {<ProductPageDemo />} />
+        <Route exact path="/" element={<Navigation cartItems={cartItems} />}>
+          <Route path = "products" element = {<ProductPageDemo  handleIncrement={handleIncrement} />} />
           <Route path = "profile" element = {<Profile />} />
         </Route>
       </Routes>

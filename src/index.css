@@ -118,14 +118,18 @@ h1 {
   border-radius: 2px;
   display: inline-block;
   margin: 1rem;
-  position: relative;
+  /* position: relative; */
   background-color: white;
   /* padding: 25px 50px 200px 50px; */
   height: 430px;
   width: 250px;
-  padding-top: 20px;
+  /* padding-top: 20px; */
   text-align: center;
   border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .products-card-1 {
@@ -138,14 +142,20 @@ h1 {
 }
 
 .products-card button {
-  width: 100px;
-  font-size: 0.6rem;
+  width: 90px;
+  font-size: 0.5rem;
   margin-top: 0;
+  margin: 0 5px;
 }
 
 .products-card button:hover {
   transform: scale(1.2);
   cursor: pointer;
+}
+
+.atc {
+  background-color: #f0e130;
+  color: black;
 }
 
 .product-information {
@@ -166,6 +176,20 @@ h1 {
 
 .navbar .links a:not(:last-child) {
   margin-right: 20px;
+}
+
+.links span {
+  margin-right: 13px;
+  color: rgb(100, 29, 29);
+}
+
+.carts-number {
+  background-color: rgb(197, 114, 230);
+  padding: 5px;
+  margin-left: 5px;
+  /* border-radius: 10px; */
+  font-size: 0.9rem;
+  color: #fff !important;
 }
 
 .brand h1 {
