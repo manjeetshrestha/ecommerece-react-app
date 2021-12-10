@@ -14,6 +14,7 @@ export default function Navigation(){
 
     return(
             <>
+            <div className="page-container">
             <nav className="navbar">
                 <div className="brand">
                     <h1>MeroStore</h1>
@@ -25,6 +26,8 @@ export default function Navigation(){
                 </div>
             </nav>
             <Outlet />
+            </div>
+           
             </>
         );
     

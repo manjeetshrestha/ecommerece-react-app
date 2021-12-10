@@ -63,11 +63,13 @@ button {
   color: white;
   font-size: 1.2rem;
 }
-input:focus {
+input,
+select:focus {
   outline: none;
 }
 
-button:hover {
+button,
+select:hover {
   cursor: pointer;
 }
 
@@ -141,10 +143,6 @@ h1 {
   margin-top: 0;
 }
 
-.products-container {
-  padding: 0 70px;
-}
-
 .products-card button:hover {
   transform: scale(1.2);
   cursor: pointer;
@@ -159,7 +157,7 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30px 50px 0px 50px;
+  /* padding: 30px 50px 0px 50px; */
 }
 
 .navbar .links a {
@@ -192,4 +190,21 @@ h1 {
 .product-rating {
   display: flex;
   justify-content: space-between;
+}
+
+.filter-component {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.page-container {
+  padding: 30px 50px;
+}
+
+select {
+  padding: 10px;
+  border: 0.7px solid black;
+  background-color: #fff;
+  margin-left: 10px;
+  border-radius: 5px;
 }

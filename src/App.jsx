@@ -29,11 +29,11 @@ function App() {
   // } 
 
   useEffect(() => {
-    const controller = new AbortController();
+    // const controller = new AbortController();
     if (!token) return navigate('/login');
 
     // navigate('/login');
-    return controller.abort();
+    // return controller.abort();
   }, []);
 
   return (
