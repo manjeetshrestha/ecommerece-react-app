@@ -12,7 +12,10 @@ function useProductApi() {
   };
 
   useEffect(() => {
+    const controller = new AbortController();
     getProducts();
+    return controller.abort();
+      
   }, []);
 
   return products;
@@ -25,8 +28,22 @@ function ProductCard(props){
         <div className="products-card products-card-1">
             <img src={props.product.image}></img>
             <div className="product-information">
-                <h2>{props.product.title}</h2>
-                <h6>$ {props.product.price}</h6>
+
+                <div className="product-title">
+                  <h2>{props.product.title}</h2>
+                </div>
+
+                <div className="product-price">
+                  <h6>Price</h6>
+                  <h6>$ {props.product.price}</h6>
+                </div>
+                
+                <div className="product-rating">
+                  <h6>Rating</h6>
+                  <h6>{props.product.rating.rate}</h6>
+                </div>
+                
+                
             </div>
             
             <button>View Details</button>
@@ -44,7 +61,7 @@ export default function ProductPageDemo(){
 
     return <ProductCard product={product} key= {product.id} />
   });   
-
+  
   return(
 
       <div className="products-container">

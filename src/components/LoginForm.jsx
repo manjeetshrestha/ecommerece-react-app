@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import LoginError from "./LoginError.jsx";
 
 async function getToken(username, password) {
   return fetch("https://fakestoreapi.com/auth/login", {
@@ -69,7 +70,9 @@ export default function LoginForm({ setToken, error, setError }) {
           ></input>
           <button>Login</button>
         </form>
+        <LoginError error={error} />
       </div>
+      
     </>
   );
 }

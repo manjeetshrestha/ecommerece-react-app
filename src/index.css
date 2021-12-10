@@ -25,6 +25,7 @@ a {
   align-items: center;
   justify-content: center;
   height: 100vh;
+  flex-direction: column;
 }
 
 .input-form {
@@ -118,7 +119,7 @@ h1 {
   position: relative;
   background-color: white;
   /* padding: 25px 50px 200px 50px; */
-  height: 370px;
+  height: 430px;
   width: 250px;
   padding-top: 20px;
   text-align: center;
@@ -172,4 +173,23 @@ h1 {
 .brand h1 {
   color: #ffc0cb;
   font-weight: 700;
+}
+
+.signout {
+  width: 100px;
+  background-color: red;
+  text-align: center;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.product-price h6,
+.product-rating h6 {
+  margin: 20px;
+}
+
+.product-price,
+.product-rating {
+  display: flex;
+  justify-content: space-between;
 }
