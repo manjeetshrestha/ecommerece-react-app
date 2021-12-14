@@ -72,7 +72,6 @@ export default function LoginForm({ setToken, error, setError }) {
         </form>
         <LoginError error={error} />
       </div>
-      
     </>
   );
 }
