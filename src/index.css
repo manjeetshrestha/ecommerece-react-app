@@ -289,3 +289,20 @@ select {
   display: flex;
   flex-direction: column;
 }
+
+.quantity-counter {
+  display: flex;
+  flex-direction: row;
+  font-size: 12px;
+}
+
+.quantity-counter span {
+  margin-left: 10px;
+  font-size: 19px;
+}
+
+.quantity-updater {
+  background-color: pink;
+  padding: 5px 10px;
+  border-radius: 10px;
+}

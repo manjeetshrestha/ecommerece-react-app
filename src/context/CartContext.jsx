@@ -5,23 +5,21 @@ export const CartContext = createContext();
 
 export function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
-  const [pay, setPay] = useState(0);
+  // const [pay, setPay] = useState(0);
 
   function addCartItem(newItem) {
     setCartItems([...cartItems, newItem]);
-    setPay(pay + newItem.price);
+    // setPay(pay + newItem.price);
   }
 
   function deleteCartItem(id, price) {
     // logic to delete cart items
     setCartItems(cartItems.filter((cartItem) => cartItem.id !== id));
-    setPay(pay - price);
+    // setPay(pay - price);
   }
 
   return (
-    <CartContext.Provider
-      value={{ cartItems, addCartItem, deleteCartItem, pay }}
-    >
+    <CartContext.Provider value={{ cartItems, addCartItem, deleteCartItem }}>
       {children}
     </CartContext.Provider>
   );
@@ -49,7 +47,7 @@ export function getCartItemsNumber() {
   return number;
 }
 
-export function getPay() {
-  const ctx = useContext(CartContext);
-  return ctx.pay;
-}
+// export function getPay() {
+//   const ctx = useContext(CartContext);
+//   return ctx.pay;
+// }

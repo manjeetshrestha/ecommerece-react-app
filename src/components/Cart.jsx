@@ -8,7 +8,7 @@ export default function Cart() {
   let cartItemsCollections = {};
   cartItems.forEach((cartItem) => {
     if (cartItemsCollections[cartItem.id]) {
-      cartItemsCollections[cartItem.id].price += cartItem.price;
+      // cartItemsCollections[cartItem.id].price += cartItem.price;
       cartItemsCollections[cartItem.id].quantity += 1;
     } else {
       cartItemsCollections[cartItem.id] = Object.assign({}, cartItem);
@@ -36,7 +36,7 @@ export default function Cart() {
         <div className="flex-container">
           <div className="cart-items">{cartCards}</div>
           <div className="checkout-card">
-            <Checkout />
+            <Checkout cartItemsCollections={cartItemsCollections} />
           </div>
         </div>
       </>

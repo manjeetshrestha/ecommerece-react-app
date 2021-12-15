@@ -1,8 +1,12 @@
 import React from "react";
-import { useCartItems, getPay } from "../context/CartContext";
+import { useCartItems } from "../context/CartContext";
 
-export default function Checkout() {
-  const pay = getPay();
+export default function Checkout({ cartItemsCollections }) {
+  // const cartItems = useCartItems();
+  let total = 0;
+  cartItemsCollections.forEach((item) => {
+    total = total + item.price * item.quantity;
+  });
   return (
     <div className="checkout-container">
       <div className="checkout-title">
@@ -10,7 +14,7 @@ export default function Checkout() {
       </div>
       <div className="total-payement">
         <h1>Total</h1>
-        <span>${pay}</span>
+        <span>${total}</span>
       </div>
       <button>Pay Now</button>
     </div>
