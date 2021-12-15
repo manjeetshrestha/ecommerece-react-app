@@ -17,14 +17,15 @@ export default function CartCard(props) {
               <span>Price $ </span>
               {props.product.price}
             </h4>
-            <h4>
+            {/* <h4>
               <span>Rating </span>
               {props.product.rating.rate}
-            </h4>
+            </h4> */}
           </div>
         </div>
         <div className="quantity">
           <h4>Quantity</h4>
+          <h4>{props.product.quantity}</h4>
         </div>
         <div className="delete">
           <button

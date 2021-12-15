@@ -10,7 +10,6 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <MemoizedApp />
-      {/* <h1>Heollo world</h1> */}
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
