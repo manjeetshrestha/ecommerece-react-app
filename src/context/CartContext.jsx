@@ -35,7 +35,6 @@ export function CartProvider({ children }) {
 export function useCartItems() {
   const ctx = useContext(CartContext);
   return ctx.cartItems;
-  x;
 }
 
 export function useCartItemsUpdater() {

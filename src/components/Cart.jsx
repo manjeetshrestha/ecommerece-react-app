@@ -15,26 +15,31 @@ export default function Cart() {
       cartItemsCollections[cartItem.id].quantity = 1;
     }
   });
-  console.log(cartItems);
-  console.log(cartItemsCollections);
+
   cartItemsCollections = Object.values(cartItemsCollections);
-  // cartItemsCollections = JSON.stringify(cartItemsCollections);
 
   const cartCards = cartItemsCollections.map((cartItemsCollection) => {
-    // console.log(cartItem);
-
     return (
       <CartCard product={cartItemsCollection} key={cartItemsCollection.id} />
     );
   });
-  return (
-    <>
-      <div className="flex-container">
-        <div className="cart-items">{cartCards}</div>
-        <div className="checkout-card">
-          <Checkout />
+
+  if (cartItems.length == 0) {
+    return (
+      <>
+        <h1>No Items added to cart</h1>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <div className="flex-container">
+          <div className="cart-items">{cartCards}</div>
+          <div className="checkout-card">
+            <Checkout />
+          </div>
         </div>
-      </div>
-    </>
-  );
+      </>
+    );
+  }
 }
