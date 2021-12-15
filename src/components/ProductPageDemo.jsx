@@ -1,5 +1,9 @@
-import React, { useState, useEffect, useContext } from "react";
-import { CartContext } from "../context/CartContext";
+import React, { useState, useEffect, useContext, memo } from "react";
+import {
+  CartContext,
+  getCartItemsNumber,
+  useCartItemsUpdater,
+} from "../context/CartContext";
 
 // api to get products
 
@@ -39,11 +43,13 @@ function useProductApi() {
 
 // function to render the UI by passing the data received through the api
 function ProductCard(props) {
-  const { cartItems, setCartItems } = useContext(CartContext);
+  // const { cartItems, setCartItems } = useContext(CartContext);
 
-  const handleIncrement = () => {
-    setCartItems(cartItems + 1);
-  };
+  // const handleIncrement = () => {
+  //   setCartItems(cartItems + 1);
+  // };
+
+  const [addCartItem] = useCartItemsUpdater();
 
   console.log("product card rendered");
   return (
@@ -66,7 +72,7 @@ function ProductCard(props) {
       </div>
       <div className="cta-buttons">
         <button>View Details</button>
-        <button className="atc" onClick={handleIncrement}>
+        <button className="atc" onClick={() => addCartItem(props.product)}>
           Add To Cart
         </button>
       </div>
@@ -125,3 +131,5 @@ export default function ProductPageDemo({ handleIncrement }) {
     </>
   );
 }
+
+// const MemoizedProductPage = memo(ProductPageDemo);

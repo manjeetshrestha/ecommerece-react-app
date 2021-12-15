@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import LoginForm from "./components/LoginForm.jsx";
 import LoginError from "./components/LoginError.jsx";
@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import Profile from "./components/Profile.jsx";
 import Navigation from "./components/Navigation.jsx";
 import { CartProvider } from "./context/CartContext.jsx";
+import Cart from "./components/Cart.jsx";
 
 function App() {
   const navigate = useNavigate();
@@ -14,11 +15,7 @@ function App() {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    // const controller = new AbortController();
     if (!token) return navigate("/login");
-
-    // navigate('/login');
-    // return controller.abort();
   }, []);
 
   return (
@@ -35,9 +32,9 @@ function App() {
               />
             }
           />
-          {/* context provider wraps it all */}
 
           <Route exact path="/" element={<Navigation />}>
+            <Route path="cart" element={<Cart />} />
             <Route path="products" element={<ProductPageDemo />} />
             <Route path="profile" element={<Profile />} />
           </Route>
