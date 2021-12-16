@@ -4,17 +4,30 @@ import Cart from "../components/Cart";
 export const CartContext = createContext();
 
 export function CartProvider({ children }) {
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState(
+    JSON.parse(localStorage.getItem("cartItems")) || []
+  );
+  // let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
   // const [pay, setPay] = useState(0);
 
   function addCartItem(newItem) {
-    setCartItems([...cartItems, newItem]);
+    // cartItems.push(newItem);
+    // setCartItems([...cartItems, newItem]);
     // setPay(pay + newItem.price);
+    // localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    localStorage.setItem("cartItems", JSON.stringify([...cartItems, newItem]));
+    setCartItems(JSON.parse(localStorage.getItem("cartItems")));
   }
 
-  function deleteCartItem(id, price) {
+  function deleteCartItem(id) {
     // logic to delete cart items
-    setCartItems(cartItems.filter((cartItem) => cartItem.id !== id));
+    // setCartItems(cartItems.filter((cartItem) => cartItem.id !== id));
+    // cartItems = cartItems.filter((cartItem) => cartItem.id !== id);
+    localStorage.setItem(
+      "cartItems",
+      JSON.stringify(cartItems.filter((cartItem) => cartItem.id !== id))
+    );
+    setCartItems(JSON.parse(localStorage.getItem("cartItems")));
     // setPay(pay - price);
   }
 

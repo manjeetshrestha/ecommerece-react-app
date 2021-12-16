@@ -30,13 +30,7 @@ export default function CartCard(props) {
           </div>
         </div>
         <div className="delete">
-          <button
-            onClick={() =>
-              deleteCartItem(props.product.id, props.product.price)
-            }
-          >
-            X
-          </button>
+          <button onClick={() => deleteCartItem(props.product.id)}>X</button>
         </div>
       </div>
     </div>
