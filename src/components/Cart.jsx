@@ -16,11 +16,34 @@ export default function Cart() {
     }
   });
 
+  function addQuantity(id) {
+    // cartItemsCollections[id].quantity += 1;
+    cartItemsCollections.forEach((cartItemsCollection) => {
+      console.log(cartItemsCollection.title);
+      if (cartItemsCollection.id == id) {
+        cartItemsCollection.quantity += 1;
+      }
+    });
+    console.log(cartItemsCollections[id].quantity);
+
+    console.log("add clicked");
+  }
+
+  function reduceQuantity(id) {
+    // cartItemsCollections[id].quantity--;
+    console.log("reduced clicked");
+  }
+
   cartItemsCollections = Object.values(cartItemsCollections);
 
   const cartCards = cartItemsCollections.map((cartItemsCollection) => {
     return (
-      <CartCard product={cartItemsCollection} key={cartItemsCollection.id} />
+      <CartCard
+        product={cartItemsCollection}
+        key={cartItemsCollection.id}
+        addQuantity={addQuantity}
+        reduceQuantity={reduceQuantity}
+      />
     );
   });
 

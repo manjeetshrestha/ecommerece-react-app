@@ -31,13 +31,34 @@ export function CartProvider({ children }) {
     // setPay(pay - price);
   }
 
+  function deleteSingleCartItem(id) {
+    // const res = [],
+    let flag = false;
+    console.log(cartItems);
+    for (let i = 0; i < cartItems.length; i++) {
+      if (flag === false && cartItems[i].id === id) {
+        flag = true;
+        // const cartItemsCopy = Object.keys(cartItems);
+        let deleteCartItem = cartItems.splice(i, 1);
+        console.log(deleteCartItem);
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+        setCartItems(JSON.parse(localStorage.getItem("cartItems")));
+        // console.log("match element found");
+        // console.log(i);
+        break;
+      }
+      // setCartItems(cartItems.splice(i, 1));
+    }
+  }
+
   return (
-    <CartContext.Provider value={{ cartItems, addCartItem, deleteCartItem }}>
+    <CartContext.Provider
+      value={{ cartItems, addCartItem, deleteCartItem, deleteSingleCartItem }}
+    >
       {children}
     </CartContext.Provider>
   );
 }
-
 // export function useAddCartItem() {
 //     const ctx =
 //     return ctx.useAddCartItem
@@ -51,6 +72,11 @@ export function useCartItems() {
 export function useCartItemsUpdater() {
   const ctx = useContext(CartContext);
   return [ctx.addCartItem, ctx.deleteCartItem];
+}
+
+export function useDeleteSingleCartItem() {
+  const ctx = useContext(CartContext);
+  return ctx.deleteSingleCartItem;
 }
 
 export function getCartItemsNumber() {
